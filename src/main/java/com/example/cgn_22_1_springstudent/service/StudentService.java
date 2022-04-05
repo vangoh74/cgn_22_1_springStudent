@@ -20,43 +20,26 @@ public class StudentService {
     }
 
     public Student getStudentById(String id) {
-        return studentRepo.getById(id);
+        return studentRepo.getStudentById(id);
     }
-/*
+
     public List<Student> getAllStudents() {
         return studentRepo.getAllStudents();
-    }*/
-
-    public List<Student> getAllStudents() {
-        List<Student> listArray = new ArrayList<>();
-        for (String key : studentRepo.getStudents().keySet() ) {
-            listArray.add(studentRepo.getStudents().get(key));
-        }
-        return listArray;
     }
-/*
+
     public Student deleteStudent(String id) {
         return studentRepo.deleteStudent(id);
-    }
-
- */
-    public Student deleteStudent(String id) {
-        Student removedStudent;
-        if (studentRepo.getStudents().containsKey(id)) {
-            removedStudent = studentRepo.getStudents().remove(id);
-        }
-        return null;
     }
 
     public Student updateStudent(Student student) {
         return studentRepo.updateStudent(student);
     }
-/*
-    public Student getStudentByName(String name) {
-        return repo.getStudentByName(name);
-    }*/
 
-    public List<Student> getStudentByName(String name) {
+    public Student getStudentByName(String name) {
         return studentRepo.getStudentByName(name);
     }
+/*
+    public List<Student> getStudentListByName(String name) {
+        return studentRepo.getStudentListByName(name);
+    }*/
 }

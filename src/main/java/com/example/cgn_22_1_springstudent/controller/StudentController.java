@@ -17,6 +17,7 @@ public class StudentController {
     public StudentController(StudentService service) {
         this.service = service;
     }
+
     @GetMapping
     public List<Student> getAllStudents() {
         return service.getAllStudents();
@@ -40,14 +41,14 @@ public class StudentController {
     public Student updateStudent(@RequestBody Student student) {
         return service.updateStudent(student);
     }
-    /*
+
     @GetMapping(path = "/name/{name}")
     public Student gestStudentByName(@PathVariable String name) {
         return service.getStudentByName(name);
-    }*/
-
-    @GetMapping(path = "/name/{name}")
-    public List<Student> gestStudentByName(@PathVariable String name) {
-        return service.getStudentByName(name);
     }
+/*
+    @GetMapping(path = "/name/{name}")
+    public List<Student> gestStudentListByName(@PathVariable String name) {
+        return service.getStudentListByName(name);
+    }*/
 }
