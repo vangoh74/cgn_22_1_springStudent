@@ -1,6 +1,7 @@
 package com.example.cgn_22_1_springstudent.controller;
 
 import com.example.cgn_22_1_springstudent.model.Student;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.cgn_22_1_springstudent.service.StudentService;
 
@@ -10,11 +11,14 @@ import java.util.List;
 @RestController
 @RequestMapping("student") //http:localhost:8080/student
 public class StudentController {
-    StudentService service = new StudentService();
+    private final StudentService service;
+
+    @Autowired // zeigt wo was injektiert wird
+    public StudentController(StudentService service) {
+        this.service = service;
+    }
     @GetMapping
     public List<Student> getAllStudents() {
-        //return List.of(new Student("Berta", "7112"), new Student("Paul", "4711"));
-        //return new ArrayList<>(List.of(new Student("Berta", "7112"), new Student("Paul", "4711")));
         return service.getAllStudents();
     }
 
@@ -36,8 +40,14 @@ public class StudentController {
     public Student updateStudent(@RequestBody Student student) {
         return service.updateStudent(student);
     }
+    /*
     @GetMapping(path = "/name/{name}")
     public Student gestStudentByName(@PathVariable String name) {
+        return service.getStudentByName(name);
+    }*/
+
+    @GetMapping(path = "/name/{name}")
+    public List<Student> gestStudentByName(@PathVariable String name) {
         return service.getStudentByName(name);
     }
 }

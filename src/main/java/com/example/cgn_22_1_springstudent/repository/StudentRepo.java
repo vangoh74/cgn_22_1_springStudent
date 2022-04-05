@@ -1,12 +1,14 @@
 package com.example.cgn_22_1_springstudent.repository;
 
 import com.example.cgn_22_1_springstudent.model.Student;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class StudentRepo {
     Map<String, Student> students = new HashMap<>();
 
@@ -14,10 +16,14 @@ public class StudentRepo {
         return students.get(id);
     }
 
+    public Map<String, Student> getStudents() {
+        return students;
+    }
+
     public Student add(Student student) {
         return students.put(student.getId(), student);
     }
-
+/*
     public List<Student> getAllStudents() {
         List<Student> listArray = new ArrayList<>();
         for (String key : students.keySet() ) {
@@ -25,13 +31,9 @@ public class StudentRepo {
         }
         return listArray;
     }
-
+*/
     public Student deleteStudent(String id) {
-        Student removedStudent;
-        if (students.containsKey(id)) {
-            removedStudent = students.remove(id);
-        }
-        return null;
+        return students.remove(id);
     }
 
     public Student updateStudent(Student student) {
@@ -40,7 +42,7 @@ public class StudentRepo {
         }
         return students.get(student.getId());
     }
-
+/*
     public Student getStudentByName(String name) {
         for (Student student : students.values()) {
             if (student.getName().equals(name)) {
@@ -48,5 +50,10 @@ public class StudentRepo {
             }
         }
         return null;
+    }*/
+
+    public List<Student> getStudentByName(String name) {
+        List<Student> allStudents = new ArrayList<>();
+        return allStudents;
     }
 }
