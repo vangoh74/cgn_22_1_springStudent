@@ -41,9 +41,9 @@ public class StudentController {
     public Student updateStudent(@RequestBody Student student) {
         return service.updateStudent(student);
     }
-
-    @GetMapping(path = "/name/{name}")
-    public Student gestStudentByName(@PathVariable String name) {
+//?name=Der Kleiner Prinz
+    @GetMapping("search")
+    public Student gestStudentByName(@RequestParam String name) {
         return service.getStudentByName(name);
     }
 /*
